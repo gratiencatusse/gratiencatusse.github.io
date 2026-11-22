@@ -4,58 +4,62 @@
 // =====================================================
 const DATA = {
   name: "Gratien Catusse",
-  tagline: "Étudiant ingénieur — décris ici ta spécialité en une phrase.",
-  chips: ["Ta formation", "Ta ville"],
+  tagline: "Étudiant ingénieur à l'ENSEEIHT, passionné de systèmes, de réseaux et de cybersécurité.",
+  chips: ["ENSEEIHT (N7), Toulouse", "Informatique & Mathématiques appliquées", "Promo 2028"],
 
-  // >>> CV : mets ici les liens (fichier PDF dans assets/ ou lien externe) <<<
+  // >>> CV : liens des boutons (PDF dans assets/ ou lien externe) <<<
   cv: [
-    { label: "Télécharger mon CV (FR)", url: "assets/CV_Gratien_Catusse_FR.pdf" },
-    { label: "Télécharger mon CV (EN)", url: "assets/CV_Gratien_Catusse_EN.pdf" },
-    { label: "Profil LinkedIn", url: "https://www.linkedin.com/in/ton-profil" }
+    { label: "Télécharger mon CV (EN)", url: "assets/CV_Gratien_Catusse.pdf" }
+    // { label: "Profil LinkedIn", url: "https://www.linkedin.com/in/TON-PROFIL" }
   ],
 
-  engineeringIntro: "Projets et compétences issus de mon cursus.",
-  // icon = nom de l'icône sur devicon.dev (facultatif)
+  engineeringIntro: "Projets et compétences issus de mon cursus d'ingénieur en informatique.",
   skills: [
-    { title: "Langages", items: [{ name: "Python", icon: "python" }, { name: "C / C++", icon: "cplusplus" }, { name: "JavaScript", icon: "javascript" }] },
-    { title: "Outils & systèmes", items: [{ name: "Git", icon: "git" }, { name: "Linux", icon: "linux" }, { name: "VS Code", icon: "vscode" }] },
-    { title: "Soft skills", items: [{ name: "Travail en équipe" }, { name: "Gestion de projet" }, { name: "Adaptabilité" }] }
+    { title: "Langages", items: [{ name: "Python", icon: "python" }, { name: "C", icon: "c" }, { name: "Java", icon: "java" }, { name: "Matlab", icon: "matlab" }] },
+    { title: "Systèmes & réseaux", items: [{ name: "Linux", icon: "linux" }, { name: "Windows", icon: "windows8" }, { name: "iptables" }, { name: "Wireshark" }, { name: "Routage dynamique (RIP)" }] },
+    { title: "Soft skills", items: [{ name: "Esprit critique" }, { name: "Résolution de problèmes" }, { name: "Collaboration" }] }
   ],
   projects: [
-    { title: "Projet exemple 1", badge: "En cours", tags: ["Web"], image: "assets/projet1.jpg",
-      desc: "Décris le projet, ton rôle et le résultat obtenu.", stack: ["JavaScript", "HTML", "CSS"],
-      links: [{ label: "Voir sur GitHub", url: "https://github.com/gratiencatusse" }] },
-    { title: "Projet exemple 2", tags: ["Embarqué"], image: "",
-      desc: "Décris le projet, ton rôle et le résultat obtenu.", stack: ["C", "Arduino"], links: [] },
-    { title: "Projet exemple 3", tags: ["Data", "Web"], image: "",
-      desc: "Décris le projet, ton rôle et le résultat obtenu.", stack: ["Python", "Pandas"], links: [] }
+    { title: "Minishell : interpréteur Unix en C", badge: "Projet académique · 2026", tags: ["Systèmes"], image: "",
+      desc: "Conception d'un interpréteur de commandes en C reproduisant les fonctions clés de bash : exécution de processus (fork, execvp, waitpid), gestion des signaux (SIGINT, SIGTSTP, SIGCHLD), redirections (<, >) et pipes. Résultat : un outil en ligne de commande fonctionnel, sans fuite mémoire, avec tâches de fond robustes.",
+      stack: ["C", "API POSIX", "Linux"], links: [] },
+    { title: "Architecture et sécurité d'un FAI simulé", badge: "Projet académique · 2026", tags: ["Réseaux", "Cybersécurité"], image: "",
+      desc: "Conception et sécurisation d'une infrastructure de fournisseur d'accès : DMZ, filtrage stateful avec iptables, protection des services Web et DNS, analyse du trafic avec Wireshark et routage dynamique RIP. Résultat : une architecture multi-zones résiliente, avec filtrage entrée/sortie et isolation des clients.",
+      stack: ["iptables", "Wireshark", "RIP", "Linux"], links: [] },
+    { title: "Simulation du flux de fabrication de wafers", badge: "Stage AIXTRON · 2025", tags: ["Simulation", "Python"], image: "",
+      desc: "Simulation à événements discrets avec SimPy pour modéliser des workflows parallèles sur plusieurs machines, avec optimisation du temps d'exécution. Résultat : plus de transparence sur les processus, un meilleur ordonnancement et un cadre réutilisable pour de futures études.",
+      stack: ["Python", "SimPy"], links: [] }
   ],
 
-  careerIntro: "Documents professionnels et expériences passées.",
+  careerIntro: "Documents professionnels, formation et stages.",
   experiences: [
-    // domain = site de l'entreprise, pour afficher son logo (facultatif)
-    { date: "Été 2026", title: "Stage ingénieur", place: "Entreprise, Ville", domain: "exemple.com", points: ["Mission principale", "Résultat obtenu"] },
-    { date: "2024 – 2027", title: "Formation d'ingénieur", place: "École, Ville", points: ["Spécialité", "Projets marquants"] }
+    { date: "Juin – juil. 2026", title: "Stagiaire cybersécurité & réseaux", place: "ABERIA, Toulouse (France)", domain: "aberia.fr",
+      points: ["Audit, sécurisation et optimisation d'infrastructures réseau managées et d'architectures télécoms pour des entreprises clientes",
+               "Analyse des menaces sur la commutation LAN et les protocoles de routage ; détection de failles et de mauvaises configurations",
+               "Configuration de règles de pare-feu et de la segmentation réseau"] },
+    { date: "Mai – juil. 2025", title: "Stagiaire ingénieur systèmes", place: "AIXTRON SE, Aix-la-Chapelle (Allemagne)", domain: "aixtron.com",
+      points: ["Modélisation et optimisation du flux de fabrication de wafers",
+               "Simulation à événements discrets en Python (SimPy)",
+               "Framework évolutif et réutilisable pour l'optimisation des procédés"] },
+    { date: "2023 – 2028", title: "Diplôme d'ingénieur en informatique", place: "ENSEEIHT (N7), Toulouse", domain: "enseeiht.fr",
+      points: ["Cursus sélectif en 5 ans, mathématiques et informatique avancées"] }
   ],
 
   mobility: {
-    languages: [{ name: "Anglais", level: "Niveau à renseigner" }, { name: "Allemand", level: "Niveau à renseigner" }],
-    text: "Décris ici ton projet de mobilité internationale (semestre, année de césure, destinations visées)."
+    languages: [{ name: "Anglais", level: "C1" }, { name: "Allemand", level: "B1" }, { name: "Français", level: "Langue maternelle" }],
+    text: "J'ai déjà effectué un stage en Allemagne, à Aix-la-Chapelle, et je suis ouvert à de nouvelles expériences à l'international. (À personnaliser : destinations visées, durée, domaine.)"
   },
-  engagement: [
-    { title: "Association / Engagement 1", text: "Décris ton rôle et ce que cela t'a apporté." },
-    { title: "Association / Engagement 2", text: "Décris ton rôle et ce que cela t'a apporté." }
-  ],
+  engagement: [], // ex. { title: "Association X", text: "Mon rôle…" }
   activities: [
-    { title: "Passion 1", text: "Musique, sport, photo… décris-la en quelques lignes." },
-    { title: "Passion 2", text: "Décris-la en quelques lignes." }
+    { title: "Formule 1", text: "Passionné de F1 et de sport automobile." },
+    { title: "Programmation compétitive", text: "Entraînement régulier sur CodinGame." },
+    { title: "Cybersécurité", text: "Parcours de formation sur TryHackMe." }
   ],
 
   contact: {
-    text: "Une question, un stage, un projet ? Écris-moi.",
+    text: "Une question, un stage, un projet ? Écrivez-moi.",
     links: [
-      { label: "Email", url: "mailto:ton.email@exemple.fr" },
-      { label: "LinkedIn", url: "https://www.linkedin.com/in/ton-profil" },
+      { label: "Gratien.catusse@gmail.com", url: "mailto:Gratien.catusse@gmail.com" },
       { label: "GitHub", url: "https://github.com/gratiencatusse" }
     ]
   }

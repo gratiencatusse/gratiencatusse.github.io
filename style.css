@@ -53,3 +53,4 @@ section h3{margin:2rem 0 1rem;font-size:1.2rem}
 .company{display:flex;align-items:center;gap:.6rem}
 .company img{width:28px;height:28px;border-radius:6px}
 #cv-buttons{margin-bottom:1rem}
+.hero img{object-position:50% 25%}
