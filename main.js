@@ -2,7 +2,7 @@
 const DATA = {
   name: "Gratien Catusse",
   tagline: "Étudiant ingénieur — décris ici ta spécialité en une phrase.",
-  chips: ["Ta formation", "Ta ville"],
+  chips: ["Ingenieur en informatique a Enseeiht", "Toulouse"],
   contact: {
     text: "Une question, un stage, un projet ? Écris-moi.",
     links: [
