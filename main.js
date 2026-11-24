@@ -4,7 +4,7 @@
 // =====================================================
 const DATA = {
   name: "Gratien Catusse",
-  linkedin: "", // <<< colle ici ton lien LinkedIn (ex: https://www.linkedin.com/in/ton-profil)
+  linkedin: "https://www.linkedin.com/in/gratien-catusse", // <<< colle ici ton lien LinkedIn (ex: https://www.linkedin.com/in/ton-profil)
   email: "gratien.catusse@gmail.com",
   github: "https://github.com/gratiencatusse",
 
