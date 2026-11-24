@@ -2,52 +2,23 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gratien Catusse | E-portfolio</title>
-  <meta name="description" content="E-portfolio de Gratien Catusse : ingénierie, parcours, mobilité, engagement et contact.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gratien Catusse | e-Portfolio</title>
+  <meta name="description" content="e-Portfolio de Gratien Catusse : projets, CV FR/EN, mobilité, engagement, sports.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="nav">
-    <a href="#welcome" class="logo">Gratien Catusse</a>
+    <a href="#home" class="logo">Gratien Catusse</a>
     <nav id="menu"></nav>
-    <button id="theme-btn" aria-label="Changer de thème">◐</button>
-    <button id="menu-btn" aria-label="Menu">☰</button>
+    <div class="tools">
+      <a id="linkedin" class="btn small" target="_blank" rel="noopener" hidden>LinkedIn</a>
+      <span class="lang"><button data-l="fr">FR</button><button data-l="en">EN</button></span>
+      <button id="theme-btn" aria-label="Theme">◐</button>
+      <button id="menu-btn" aria-label="Menu">☰</button>
+    </div>
   </header>
-
-  <main>
-    <section id="welcome" class="hero">
-      <div>
-        <h1 id="hero-name"></h1>
-        <p id="hero-tagline"></p>
-        <p class="chips" id="hero-chips"></p>
-        <a class="btn" href="#engineering">Voir mes projets</a>
-        <a class="btn ghost" href="#contact">Me contacter</a>
-      </div>
-      <img id="hero-photo" alt="Portrait de Gratien Catusse" src="assets/photo.jpg" onerror="this.style.display='none'">
-    </section>
-
-    <section id="engineering">
-      <h2>Ingénierie</h2><p class="sub" id="eng-sub"></p>
-      <h3>Compétences</h3><div class="grid" id="skills"></div>
-      <h3>Projets</h3><div class="filters" id="filters"></div><div class="grid" id="projects"></div>
-    </section>
-
-    <section id="career">
-      <h2>Parcours</h2><p class="sub" id="career-sub"></p>
-      <div id="cv-buttons"></div>
-      <h3>Expériences</h3><div class="timeline" id="experiences"></div>
-    </section>
-
-    <section id="mobility"><h2>Mobilité</h2><div id="mobility-body"></div></section>
-    <section id="engagement"><h2>Engagement</h2><div class="grid" id="engagement-body"></div></section>
-    <section id="activities"><h2>Activités</h2><div class="grid" id="activities-body"></div></section>
-
-    <section id="contact">
-      <h2>Contact</h2><p id="contact-text"></p>
-      <div id="contact-links" class="chips"></div>
-    </section>
-  </main>
+  <main id="app"><noscript>Activez JavaScript pour consulter ce portfolio.</noscript></main>
   <footer id="footer"></footer>
   <script src="main.js"></script>
 </body>

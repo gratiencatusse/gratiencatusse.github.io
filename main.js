@@ -1,151 +1,168 @@
 // =====================================================
-// 1. TES DONNÉES : modifie uniquement cette partie
-//    Une section dont la liste est vide est masquée.
+// 1. TES DONNÉES (FR / EN) : modifie uniquement cette partie
+//    Une section vide est masquée.
 // =====================================================
 const DATA = {
   name: "Gratien Catusse",
-  tagline: "Étudiant ingénieur à l'ENSEEIHT, passionné de systèmes, de réseaux et de cybersécurité.",
-  chips: ["ENSEEIHT (N7), Toulouse", "Informatique & Mathématiques appliquées", "Promo 2028"],
+  linkedin: "", // <<< colle ici ton lien LinkedIn (ex: https://www.linkedin.com/in/ton-profil)
+  email: "gratien.catusse@gmail.com",
+  github: "https://github.com/gratiencatusse",
 
-  // >>> CV : liens des boutons (PDF dans assets/ ou lien externe) <<<
+  tagline: {
+    fr: "Étudiant ingénieur en informatique à l'ENSEEIHT, passionné par les réseaux et la cybersécurité.",
+    en: "Computer science engineering student at ENSEEIHT, passionate about networks and cybersecurity." },
+  chips: { fr: ["ENSEEIHT (N7), Toulouse", "Parcours ASR : Architecture Système et Réseau", "Promo 2028"],
+           en: ["ENSEEIHT (N7), Toulouse", "ASR track: System & Network Architecture", "Class of 2028"] },
+
+  // >>> CV : mets ici les liens (PDF dans assets/ ou lien externe) <<<
   cv: [
-    { label: "Télécharger mon CV (EN)", url: "assets/CV_Gratien_Catusse.pdf" }
-    // { label: "Profil LinkedIn", url: "https://www.linkedin.com/in/TON-PROFIL" }
+    { label: { fr: "CV en français", en: "CV in French" }, url: "assets/CV_Gratien_Catusse_FR.pdf" },
+    { label: { fr: "CV en anglais", en: "CV in English" }, url: "assets/CV_Gratien_Catusse_EN.pdf" }
   ],
 
-  engineeringIntro: "Projets et compétences issus de mon cursus d'ingénieur en informatique.",
   skills: [
-    { title: "Langages", items: [{ name: "Python", icon: "python" }, { name: "C", icon: "c" }, { name: "Java", icon: "java" }, { name: "Matlab", icon: "matlab" }] },
-    { title: "Systèmes & réseaux", items: [{ name: "Linux", icon: "linux" }, { name: "Windows", icon: "windows8" }, { name: "iptables" }, { name: "Wireshark" }, { name: "Routage dynamique (RIP)" }] },
-    { title: "Soft skills", items: [{ name: "Esprit critique" }, { name: "Résolution de problèmes" }, { name: "Collaboration" }] }
+    { title: { fr: "Langages", en: "Languages" }, items: [{ n: "Python", i: "python" }, { n: "C", i: "c" }, { n: "Java", i: "java" }, { n: "Matlab", i: "matlab" }] },
+    { title: { fr: "Systèmes & réseaux", en: "Systems & networks" }, items: [{ n: "Linux", i: "linux" }, { n: "Windows", i: "windows8" }, { n: "iptables" }, { n: "Wireshark" }, { n: "RIP" }] },
+    { title: "Soft skills", items: [{ n: { fr: "Esprit critique", en: "Critical thinking" } }, { n: { fr: "Résolution de problèmes", en: "Problem-solving" } }, { n: { fr: "Collaboration", en: "Collaboration" } }] }
   ],
+  tagLabels: { sys: { fr: "Systèmes", en: "Systems" }, net: { fr: "Réseaux & cyber", en: "Networks & cyber" }, sim: "Simulation" },
   projects: [
-    { title: "Minishell : interpréteur Unix en C", badge: "Projet académique · 2026", tags: ["Systèmes"], image: "",
-      desc: "Conception d'un interpréteur de commandes en C reproduisant les fonctions clés de bash : exécution de processus (fork, execvp, waitpid), gestion des signaux (SIGINT, SIGTSTP, SIGCHLD), redirections (<, >) et pipes. Résultat : un outil en ligne de commande fonctionnel, sans fuite mémoire, avec tâches de fond robustes.",
-      stack: ["C", "API POSIX", "Linux"], links: [] },
-    { title: "Architecture et sécurité d'un FAI simulé", badge: "Projet académique · 2026", tags: ["Réseaux", "Cybersécurité"], image: "",
-      desc: "Conception et sécurisation d'une infrastructure de fournisseur d'accès : DMZ, filtrage stateful avec iptables, protection des services Web et DNS, analyse du trafic avec Wireshark et routage dynamique RIP. Résultat : une architecture multi-zones résiliente, avec filtrage entrée/sortie et isolation des clients.",
+    { title: { fr: "Minishell : interpréteur Unix en C", en: "Minishell: Unix shell in C" }, badge: { fr: "Projet académique · 2026", en: "Academic project · 2026" }, tags: ["sys"], image: "",
+      desc: { fr: "Interpréteur de commandes en C reproduisant les fonctions clés de bash : processus (fork, execvp, waitpid), signaux (SIGINT, SIGTSTP, SIGCHLD), redirections et pipes. Résultat : un outil fonctionnel, sans fuite mémoire, avec tâches de fond robustes.",
+              en: "Shell interpreter in C reproducing core bash features: processes (fork, execvp, waitpid), signals (SIGINT, SIGTSTP, SIGCHLD), redirections and pipes. Result: a functional, leak-free tool with robust background tasks." },
+      stack: ["C", "POSIX", "Linux"], links: [] },
+    { title: { fr: "Architecture et sécurité d'un FAI simulé", en: "Simulated ISP architecture & security" }, badge: { fr: "Projet académique · 2026", en: "Academic project · 2026" }, tags: ["net"], image: "",
+      desc: { fr: "Conception et sécurisation d'une infrastructure de FAI : DMZ, filtrage stateful avec iptables, protection des services Web et DNS, analyse du trafic avec Wireshark, routage dynamique RIP. Résultat : une architecture multi-zones résiliente avec isolation des clients.",
+              en: "Design and securing of an ISP infrastructure: DMZ, stateful filtering with iptables, Web and DNS protection, traffic analysis with Wireshark, RIP dynamic routing. Result: a resilient multi-zone architecture with client isolation." },
       stack: ["iptables", "Wireshark", "RIP", "Linux"], links: [] },
-    { title: "Simulation du flux de fabrication de wafers", badge: "Stage AIXTRON · 2025", tags: ["Simulation", "Python"], image: "",
-      desc: "Simulation à événements discrets avec SimPy pour modéliser des workflows parallèles sur plusieurs machines, avec optimisation du temps d'exécution. Résultat : plus de transparence sur les processus, un meilleur ordonnancement et un cadre réutilisable pour de futures études.",
+    { title: { fr: "Simulation du flux de fabrication de wafers", en: "Wafer fabrication workflow simulation" }, badge: { fr: "Stage AIXTRON · 2025", en: "AIXTRON internship · 2025" }, tags: ["sim"], image: "",
+      desc: { fr: "Diagramme de Gantt en Python pour visualiser les dépendances, puis simulation à événements discrets (SimPy) de flux parallèles, optimisée pour réduire le temps d'exécution. Résultat : meilleur ordonnancement et cadre réutilisable.",
+              en: "Python-based Gantt chart to visualise dependencies, then a SimPy discrete-event simulation of parallel workflows, optimised to cut runtime. Result: better scheduling and a reusable framework." },
       stack: ["Python", "SimPy"], links: [] }
   ],
 
-  careerIntro: "Documents professionnels, formation et stages.",
   experiences: [
-    { date: "Juin – juil. 2026", title: "Stagiaire cybersécurité & réseaux", place: "ABERIA, Toulouse (France)", domain: "aberia.fr",
-      points: ["Audit, sécurisation et optimisation d'infrastructures réseau managées et d'architectures télécoms pour des entreprises clientes",
-               "Analyse des menaces sur la commutation LAN et les protocoles de routage ; détection de failles et de mauvaises configurations",
-               "Configuration de règles de pare-feu et de la segmentation réseau"] },
-    { date: "Mai – juil. 2025", title: "Stagiaire ingénieur systèmes", place: "AIXTRON SE, Aix-la-Chapelle (Allemagne)", domain: "aixtron.com",
-      points: ["Modélisation et optimisation du flux de fabrication de wafers",
-               "Simulation à événements discrets en Python (SimPy)",
-               "Framework évolutif et réutilisable pour l'optimisation des procédés"] },
-    { date: "2023 – 2028", title: "Diplôme d'ingénieur en informatique", place: "ENSEEIHT (N7), Toulouse", domain: "enseeiht.fr",
-      points: ["Cursus sélectif en 5 ans, mathématiques et informatique avancées"] }
+    { date: { fr: "Juin – juil. 2026", en: "Jun – Jul 2026" }, title: { fr: "Stagiaire cybersécurité & réseaux", en: "Cybersecurity & network intern" }, place: "ABERIA, Toulouse", domain: "aberia.fr",
+      points: { fr: ["Audit, sécurisation et optimisation d'infrastructures réseau managées et d'architectures télécoms", "Analyse des menaces sur la commutation et le routage LAN", "Règles de pare-feu et segmentation réseau"],
+                en: ["Audit, securing and optimisation of managed network infrastructures and telecom architectures", "Threat analysis on LAN switching and routing", "Firewall rules and network segmentation"] } },
+    { date: { fr: "Mai – juil. 2025", en: "May – Jul 2025" }, title: { fr: "Stagiaire ingénieur systèmes", en: "System engineer intern" }, place: { fr: "AIXTRON SE, Allemagne", en: "AIXTRON SE, Germany" }, domain: "aixtron.com",
+      points: { fr: ["Modélisation et optimisation du flux de fabrication de wafers", "Simulation à événements discrets (SimPy)"], en: ["Modelling and optimisation of the wafer fabrication workflow", "Discrete-event simulation (SimPy)"] } },
+    { date: "2025 – 2028", title: { fr: "Diplôme d'ingénieur en science du numérique", en: "Engineering degree in digital science" }, place: "ENSEEIHT (N7), Toulouse", domain: "enseeiht.fr",
+      points: { fr: ["Programme sélectif en maths et informatique", "Parcours ASR (Architecture Système et Réseau)"], en: ["Selective programme in maths and computer science", "ASR track (System & Network Architecture)"] } },
+    { date: "2023 – 2025", title: { fr: "Classe préparatoire T²", en: "Preparatory classes (prépa T²)" }, place: "", domain: "",
+      points: { fr: ["Transition Écologique et Sociale pendant deux ans"], en: ["Two years of Ecological & Social Transition studies"] } }
   ],
 
   mobility: {
-    languages: [{ name: "Anglais", level: "C1" }, { name: "Allemand", level: "B1" }, { name: "Français", level: "Langue maternelle" }],
-    text: "J'ai déjà effectué un stage en Allemagne, à Aix-la-Chapelle, et je suis ouvert à de nouvelles expériences à l'international. (À personnaliser : destinations visées, durée, domaine.)"
+    languages: [{ n: { fr: "Anglais", en: "English" }, l: "C1" }, { n: { fr: "Allemand", en: "German" }, l: "B1" }, { n: { fr: "Français", en: "French" }, l: { fr: "Langue maternelle", en: "Native" } }],
+    wishes: [
+      { u: "FHNW, School of Engineering", c: { fr: "Suisse", en: "Switzerland" }, p: "MSE Information & Cyber Security",
+        t: { fr: "Mon premier choix : innovation, sécurité des systèmes d'information et prolongement direct de mon parcours ASR. Modules visés : Advanced Network Security, Cyber Security, Cyber Security Operations, Security of Industrial OT, Cryptography and Coding Theory.",
+             en: "My first choice: innovation, information-system security and a direct continuation of my ASR track. Target modules: Advanced Network Security, Cyber Security, Cyber Security Operations, Security of Industrial OT, Cryptography and Coding Theory." } },
+      { u: "Universität Konstanz", c: { fr: "Allemagne", en: "Germany" }, p: "Computer and Information Science",
+        t: { fr: "Cryptographie avancée et vérification formelle de logiciels, dans un environnement germanophone tout près de la frontière suisse.",
+             en: "Advanced cryptography and formal verification of software, in a German-speaking environment right next to the Swiss border." } },
+      { u: "Alpen-Adria-Universität Klagenfurt", c: { fr: "Autriche", en: "Austria" }, p: "Artificial Intelligence and Cybersecurity",
+        t: { fr: "Un pays germanophone que je ne connais pas encore, avec un master mêlant IA et cybersécurité, 100 % en anglais.",
+             en: "A German-speaking country I don't know yet, with a master's combining AI and cybersecurity, taught 100% in English." } }
+    ],
+    project: { fr: "Je veux me spécialiser en cybersécurité (ingénieur cyber, architecte sécurité réseau, consultant), puis viser à terme un poste de RSSI ou de chef de projet cyber. Je souhaite faire mon PFE et débuter ma carrière dans la région de Zurich : une mobilité germanophone me permettra de perfectionner mon allemand et de m'insérer dans le tissu local.",
+               en: "I want to specialise in cybersecurity (security engineer, network security architect, consultant), and eventually become a CISO or cyber project lead. I plan to do my final-year internship and start my career in the Zurich area: a German-speaking exchange will let me improve my German and build local connections." }
   },
-  engagement: [], // ex. { title: "Association X", text: "Mon rôle…" }
-  activities: [
-    { title: "Formule 1", text: "Passionné de F1 et de sport automobile." },
-    { title: "Programmation compétitive", text: "Entraînement régulier sur CodinGame." },
-    { title: "Cybersécurité", text: "Parcours de formation sur TryHackMe." }
+
+  engagement: [
+    { title: { fr: "La Fresque du Climat & Objectif 2 Tonnes", en: "La Fresque du Climat & Objectif 2 Tonnes" },
+      text: { fr: "J'ai participé à ces ateliers, qui m'ont permis de mieux comprendre les enjeux environnementaux et les objectifs de durabilité.",
+              en: "I took part in these workshops, which helped me better understand environmental challenges and sustainability goals." } },
+    { title: { fr: "Prépa T² : Transition Écologique et Sociale", en: "Prépa T²: Ecological & Social Transition" },
+      text: { fr: "Deux ans d'études en Transition Écologique et Sociale, d'où un vif intérêt pour le développement durable et ses applications concrètes.",
+              en: "Two years studying Ecological and Social Transition, which gave me a strong interest in sustainable development and its practical applications." } }
   ],
 
-  contact: {
-    text: "Une question, un stage, un projet ? Écrivez-moi.",
-    links: [
-      { label: "Gratien.catusse@gmail.com", url: "mailto:Gratien.catusse@gmail.com" },
-      { label: "GitHub", url: "https://github.com/gratiencatusse" }
-    ]
-  }
+  sports: [
+    { title: { fr: "Sport automobile", en: "Motorsport" }, text: { fr: "Karting régulier et Formule Renault en 2024. F1 et automobile sont mes grandes passions.", en: "Regular kart racing and Formula Renault in 2024. F1 and cars are big passions." } },
+    { title: { fr: "Escalade & alpinisme", en: "Climbing & mountaineering" }, text: { fr: "Un défi physique et mental dans des environnements naturels.", en: "A physical and mental challenge in natural environments." } },
+    { title: { fr: "Échecs", en: "Chess" }, text: { fr: "Pour la stratégie, la concentration et l'esprit d'analyse.", en: "For strategy, focus and analytical thinking." } },
+    { title: { fr: "Cyber & algorithmique", en: "Cyber & algorithms" }, text: { fr: "Programmation compétitive sur CodinGame, parcours TryHackMe.", en: "Competitive programming on CodinGame, TryHackMe learning paths." } }
+  ]
+};
+
+// Textes de l'interface
+const UI = {
+  fr: { home: "Accueil", projects: "Projets", cv: "CV", mobility: "Mobilité", engagement: "Environnement", sports: "Sports & loisirs", contact: "Contact",
+        all: "Tous", skills: "Compétences", exp: "Parcours & expériences", langs: "Langues", pro: "Projet professionnel", wishes: "Mes vœux",
+        see: "Voir mes projets", write: "Me contacter", cvText: "Téléchargez mon CV :", contactText: "Une question, un stage, un projet ? Écrivez-moi." },
+  en: { home: "Home", projects: "Projects", cv: "CV", mobility: "Mobility", engagement: "Environment", sports: "Sports & hobbies", contact: "Contact",
+        all: "All", skills: "Skills", exp: "Background & experience", langs: "Languages", pro: "Career plan", wishes: "My choices",
+        see: "See my projects", write: "Get in touch", cvText: "Download my CV:", contactText: "A question, an internship, a project? Write to me." }
 };
 
 // =====================================================
 // 2. CODE (pas besoin de modifier)
 // =====================================================
 const $ = s => document.querySelector(s);
-const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const chips = a => a.map(t => `<span class="chip">${esc(t)}</span>`).join("");
-const hide = id => { document.getElementById(id).style.display = "none"; };
-const add = (parent, node) => { node.classList.add("reveal"); $(parent).append(node); };
+let lang = "fr", tag = "all";
+try { lang = localStorage.getItem("lang") || ((navigator.language || "fr").slice(0, 2) === "en" ? "en" : "fr"); } catch (e) {}
+const t = v => (v && typeof v === "object" && "fr" in v) ? (v[lang] ?? v.fr) : v;
+const chips = a => (t(a) || []).map(x => `<span class="chip">${esc(t(x))}</span>`).join("");
+const card = (inner, cls = "") => `<div class="card reveal ${cls}">${inner}</div>`;
 
-// Accueil
-$("#hero-name").textContent = DATA.name;
-$("#hero-tagline").textContent = DATA.tagline;
-$("#hero-chips").innerHTML = chips(DATA.chips);
+function render() {
+  const u = UI[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.l === lang));
+  const li = $("#linkedin"); if (DATA.linkedin) { li.href = DATA.linkedin; li.hidden = false; }
 
-// Ingénierie : compétences
-$("#eng-sub").textContent = DATA.engineeringIntro;
-DATA.skills.forEach(g => add("#skills", el("div", "card",
-  `<h4>${esc(g.title)}</h4><ul class="skills-list">${g.items.map(i => `<li class="skill">${i.icon
-    ? `<img alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${esc(i.icon)}/${esc(i.icon)}-original.svg" onerror="this.remove()">` : ""}${esc(i.name)}</li>`).join("")}</ul>`)));
+  const tagIds = [...new Set(DATA.projects.flatMap(p => p.tags))];
+  const sections = {
+    home: `<section id="home" class="hero"><div><h1>${esc(DATA.name)}</h1><p>${esc(t(DATA.tagline))}</p><p class="chips">${chips(DATA.chips)}</p>
+      <a class="btn" href="#projects">${u.see}</a><a class="btn ghost" href="#contact">${u.write}</a></div>
+      <img alt="${esc(DATA.name)}" src="assets/photo.jpg" onerror="this.style.display='none'"></section>`,
 
-// Ingénierie : projets + filtres
-function renderProjects(tag) {
-  $("#projects").innerHTML = "";
-  DATA.projects.filter(p => tag === "Tous" || p.tags.includes(tag)).forEach(p => add("#projects", Object.assign(el("article", "card in",
-    `${p.image ? `<img class="thumb" alt="${esc(p.title)}" src="${esc(p.image)}" onerror="this.remove()">` : ""}
-     ${p.badge ? `<span class="badge">${esc(p.badge)}</span>` : ""}
-     <h4>${esc(p.title)}</h4><p>${esc(p.desc)}</p><div class="chips">${chips(p.stack)}</div>
-     <p>${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</p>`))));
+    projects: `<section id="projects"><h2>${u.projects}</h2>
+      <h3>${u.skills}</h3><div class="grid">${DATA.skills.map(g => card(`<h4>${esc(t(g.title))}</h4><ul class="skills-list">${g.items.map(i => `<li class="skill">${i.i
+        ? `<img alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${i.i}/${i.i}-original.svg" onerror="this.remove()">` : ""}${esc(t(i.n))}</li>`).join("")}</ul>`)).join("")}</div>
+      <div class="filters" style="margin-top:2rem">${["all", ...tagIds].map(k => `<button data-tag="${k}" class="${k === tag ? "on" : ""}">${k === "all" ? u.all : esc(t(DATA.tagLabels[k]))}</button>`).join("")}</div>
+      <div class="grid">${DATA.projects.filter(p => tag === "all" || p.tags.includes(tag)).map(p => card(
+        `${p.image ? `<img class="thumb" alt="" src="${esc(p.image)}" onerror="this.remove()">` : ""}<span class="badge">${esc(t(p.badge))}</span><h4>${esc(t(p.title))}</h4><p>${esc(t(p.desc))}</p>
+         <div class="chips">${chips(p.stack)}</div><p>${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(t(l.label))}</a>`).join("")}</p>`)).join("")}</div></section>`,
+
+    cv: `<section id="cv"><h2>${u.cv}</h2><p>${u.cvText}</p><div>${DATA.cv.map((c, i) => `<a class="btn ${i ? "ghost" : ""}" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(t(c.label))}</a>`).join("")}</div>
+      <h3>${u.exp}</h3><div class="timeline">${DATA.experiences.map(x => card(`<span class="date">${esc(t(x.date))}</span><div class="company">${x.domain
+        ? `<img alt="" src="https://www.google.com/s2/favicons?domain=${x.domain}&sz=64" onerror="this.remove()">` : ""}<h4>${esc(t(x.title))}</h4></div><p>${esc(t(x.place))}</p><ul>${t(x.points).map(p => `<li>${esc(p)}</li>`).join("")}</ul>`)).join("")}</div></section>`,
+
+    mobility: `<section id="mobility"><h2>${u.mobility}</h2>
+      <h3>${u.langs}</h3><div class="grid">${DATA.mobility.languages.map(l => card(`<h4>${esc(t(l.n))}</h4><p>${esc(t(l.l))}</p>`)).join("")}</div>
+      <h3>${u.wishes}</h3><div class="grid">${DATA.mobility.wishes.map((w, i) => card(`<span class="rank">#${i + 1} · ${esc(t(w.c))}</span><h4>${esc(w.u)}</h4><p><b>${esc(w.p)}</b></p><p>${esc(t(w.t))}</p>`)).join("")}</div>
+      <h3>${u.pro}</h3>${card(`<p class="pro">${esc(t(DATA.mobility.project))}</p>`, "wide")}</section>`,
+
+    engagement: `<section id="engagement"><h2>${u.engagement}</h2><div class="grid">${DATA.engagement.map(e => card(`<h4>${esc(t(e.title))}</h4><p>${esc(t(e.text))}</p>`)).join("")}</div></section>`,
+    sports: `<section id="sports"><h2>${u.sports}</h2><div class="grid">${DATA.sports.map(e => card(`<h4>${esc(t(e.title))}</h4><p>${esc(t(e.text))}</p>`)).join("")}</div></section>`,
+    contact: `<section id="contact"><h2>${u.contact}</h2><p>${u.contactText}</p><div class="chips">
+      <a class="btn" href="mailto:${DATA.email}">${esc(DATA.email)}</a>${DATA.github ? `<a class="btn ghost" href="${DATA.github}" target="_blank" rel="noopener">GitHub</a>` : ""}${DATA.linkedin ? `<a class="btn ghost" href="${DATA.linkedin}" target="_blank" rel="noopener">LinkedIn</a>` : ""}</div></section>`
+  };
+  const empty = { engagement: !DATA.engagement.length, sports: !DATA.sports.length };
+  const ids = Object.keys(sections).filter(k => !empty[k]);
+  $("#app").innerHTML = ids.map(k => sections[k]).join("");
+  $("#menu").innerHTML = ids.map(k => `<a href="#${k}">${u[k]}</a>`).join("");
+  $("#footer").textContent = `© ${new Date().getFullYear()} ${DATA.name}`;
+
+  document.querySelectorAll(".filters button").forEach(b => b.onclick = () => { tag = b.dataset.tag; const y = scrollY; render(); scrollTo(0, y); });
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), { threshold: .1 });
+  document.querySelectorAll(".reveal").forEach(e => io.observe(e));
+  const spy = new IntersectionObserver(es => es.forEach(e => e.isIntersecting &&
+    document.querySelectorAll("#menu a").forEach(a => a.classList.toggle("active", a.hash === "#" + e.target.id))), { rootMargin: "-50% 0px -50% 0px" });
+  ids.forEach(k => spy.observe(document.getElementById(k)));
 }
-const tags = ["Tous", ...new Set(DATA.projects.flatMap(p => p.tags))];
-tags.forEach((t, i) => {
-  const b = el("button", i === 0 ? "on" : "", esc(t));
-  b.onclick = () => { document.querySelectorAll("#filters button").forEach(x => x.classList.remove("on")); b.classList.add("on"); renderProjects(t); };
-  $("#filters").append(b);
-});
-renderProjects("Tous");
 
-// Parcours
-$("#career-sub").textContent = DATA.careerIntro;
-$("#cv-buttons").innerHTML = DATA.cv.map((c, i) => `<a class="btn ${i ? "ghost" : ""}" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.label)}</a>`).join("");
-DATA.experiences.forEach(x => add("#experiences", el("div", "card",
-  `<span class="date">${esc(x.date)}</span>
-   <div class="company">${x.domain ? `<img alt="" src="https://www.google.com/s2/favicons?domain=${esc(x.domain)}&sz=64" onerror="this.remove()">` : ""}<h4>${esc(x.title)}</h4></div>
-   <p>${esc(x.place)}</p><ul>${x.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>`)));
-
-// Mobilité
-const m = DATA.mobility;
-if (m) $("#mobility-body").innerHTML = `<div class="grid">${m.languages.map(l => `<div class="card reveal"><h4>${esc(l.name)}</h4><p>${esc(l.level)}</p></div>`).join("")}</div><p>${esc(m.text)}</p>`;
-else hide("mobility");
-
-// Engagement & activités
-const fill = (list, target, id) => list.length
-  ? list.forEach(i => add(target, el("div", "card", `<h4>${esc(i.title)}</h4><p>${esc(i.text)}</p>`))) : hide(id);
-fill(DATA.engagement, "#engagement-body", "engagement");
-fill(DATA.activities, "#activities-body", "activities");
-
-// Contact + pied de page
-$("#contact-text").textContent = DATA.contact.text;
-$("#contact-links").innerHTML = DATA.contact.links.map(l => `<a class="btn" href="${esc(l.url)}">${esc(l.label)}</a>`).join("");
-$("#footer").textContent = `© ${new Date().getFullYear()} ${DATA.name}`;
-
-// Menu (uniquement les sections visibles)
-const labels = { welcome: "Accueil", engineering: "Ingénierie", career: "Parcours", mobility: "Mobilité", engagement: "Engagement", activities: "Activités", contact: "Contact" };
-const ids = Object.keys(labels).filter(id => document.getElementById(id).style.display !== "none");
-$("#menu").innerHTML = ids.map(id => `<a href="#${id}">${labels[id]}</a>`).join("");
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => { lang = b.dataset.l; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
 $("#menu-btn").onclick = () => $("#menu").classList.toggle("open");
 $("#menu").onclick = () => $("#menu").classList.remove("open");
-
-// Animations + lien actif
-const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), { threshold: .15 });
-document.querySelectorAll(".reveal").forEach(e => io.observe(e));
-const spy = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) document.querySelectorAll("#menu a").forEach(a => a.classList.toggle("active", a.hash === "#" + e.target.id));
-}), { rootMargin: "-50% 0px -50% 0px" });
-ids.forEach(id => spy.observe(document.getElementById(id)));
-
-// Thème clair/sombre
-try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+try { const th = localStorage.getItem("theme"); if (th) document.documentElement.dataset.theme = th; } catch (e) {}
 $("#theme-btn").onclick = () => {
-  const t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  document.documentElement.dataset.theme = t;
-  try { localStorage.setItem("theme", t); } catch (e) {}
+  const th = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = th;
+  try { localStorage.setItem("theme", th); } catch (e) {}
 };
+render();

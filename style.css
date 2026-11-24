@@ -54,3 +54,12 @@ section h3{margin:2rem 0 1rem;font-size:1.2rem}
 .company img{width:28px;height:28px;border-radius:6px}
 #cv-buttons{margin-bottom:1rem}
 .hero img{object-position:50% 25%}
+.tools{display:flex;align-items:center;gap:.6rem}
+.btn.small{padding:.3rem .8rem;margin:0;font-size:.85rem}
+.lang button{font-size:.85rem!important;padding:.2rem .5rem;border:1px solid var(--border)!important;color:var(--muted)!important}
+.lang button.on{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+.lang button:first-child{border-radius:6px 0 0 6px}.lang button:last-child{border-radius:0 6px 6px 0}
+.rank{font-size:.8rem;font-weight:700;color:var(--accent)}
+.card.wide{grid-column:1/-1}
+.card p.pro{color:var(--text)}
+@media(max-width:760px){.tools .btn{display:none}}
